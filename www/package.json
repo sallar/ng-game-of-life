@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "stats.js": "^0.17.0",
     "zone.js": "^0.8.29"
   }
 }

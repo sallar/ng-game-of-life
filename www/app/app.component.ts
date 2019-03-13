@@ -1,6 +1,11 @@
 import { Component, ElementRef, ViewChild, AfterViewInit } from "@angular/core";
 import { GameService } from "./game.service";
 import { Cell } from "ng-game-of-life";
+import Stats from "stats.js";
+
+const stats = new Stats();
+stats.showPanel(0);
+document.body.appendChild(stats.dom);
 
 const CELL_SIZE = 10; // px
 const LINE_WDITH = 2;
@@ -101,9 +106,13 @@ export class AppComponent implements AfterViewInit {
   }
 
   loop() {
+    stats.begin();
+
     this.game.tick();
     this.drawGrid();
     this.drawCells();
+
+    stats.end();
 
     this.animationId = requestAnimationFrame(this.loop.bind(this));
   }
