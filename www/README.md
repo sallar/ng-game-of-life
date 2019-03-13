@@ -1,51 +1,27 @@
-# `create-wasm-app`
+# Www
 
-> An `npm init` template for kick starting a project that uses NPM packages
-> containing Rust-generated WebAssembly and bundles them with Webpack.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
 
-This template is designed for depending on NPM packages that contain
-Rust-generated WebAssembly and using them to create a Website.
+## Development server
 
-* Want to create an NPM package with Rust and WebAssembly? [Check out
-  `wasm-pack-template`.](https://github.com/rustwasm/wasm-pack-template)
-* Want to make a monorepo-style Website without publishing to NPM? Check out
-  [`rust-webpack-template`](https://github.com/rustwasm/rust-webpack-template)
-  and/or
-  [`rust-parcel-template`](https://github.com/rustwasm/rust-parcel-template).
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## 🚴 Usage
+## Code scaffolding
 
-```
-npm init wasm-app
-```
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## 🔋 Batteries Included
+## Build
 
-- `.gitignore`: ignores `node_modules`
-- `LICENSE-APACHE` and `LICENSE-MIT`: most Rust projects are licensed this way, so these are included for you
-- `README.md`: the file you are reading now!
-- `index.html`: a bare bones html document that includes the webpack bundle
-- `index.js`: example js file with a comment showing how to import and use a wasm pkg
-- `package.json` and `package-lock.json`:
-  - pulls in devDependencies for using webpack:
-      - [`webpack`](https://www.npmjs.com/package/webpack)
-      - [`webpack-cli`](https://www.npmjs.com/package/webpack-cli)
-      - [`webpack-dev-server`](https://www.npmjs.com/package/webpack-dev-server)
-  - defines a `start` script to run `webpack-dev-server`
-- `webpack.config.js`: configuration file for bundling your js with webpack
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## License
+## Running unit tests
 
-Licensed under either of
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-* Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
-* MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+## Running end-to-end tests
 
-at your option.
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-### Contribution
+## Further help
 
-Unless you explicitly state otherwise, any contribution intentionally
-submitted for inclusion in the work by you, as defined in the Apache-2.0
-license, shall be dual licensed as above, without any additional terms or
-conditions.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
