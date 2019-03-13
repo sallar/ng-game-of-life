@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "module": "esnext",
+        "strict": false,
+        "baseUrl": "./",
+        
+        "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2018",
+    "importHelpers": true,
+        "typeRoots": [
+            "node_modules/@types"
+          ],
+          "lib": [
+            "es2018",
+            "dom"
+          ]
+    }
+}

@@ -1,6 +1,14 @@
+// @ts-ignore
 import { Universe, Cell } from "ng-game-of-life";
+// @ts-ignore
 import { memory } from "ng-game-of-life/ng_game_of_life_bg";
 
+// angular polyfills
+import "core-js/es7/reflect";
+import "zone.js/dist/zone";
+import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+import { AppModule } from "./app/app.module";
+/* 
 const CELL_SIZE = 5; // px
 const GRID_COLOR = "#CCCCCC";
 const DEAD_COLOR = "#FFFFFF";
@@ -12,7 +20,9 @@ const height = universe.height();
 
 // Give the canvas room for all of our cells and a 1px border
 // around each of them.
-const canvas = document.getElementById("game-of-life-canvas");
+const canvas = document.getElementById(
+  "game-of-life-canvas"
+) as HTMLCanvasElement;
 canvas.height = (CELL_SIZE + 1) * height + 1;
 canvas.width = (CELL_SIZE + 1) * width + 1;
 
@@ -107,15 +117,19 @@ canvas.addEventListener("click", event => {
 
   drawGrid();
   drawCells();
-});
+}); */
 
-const renderLoop = () => {
-  universe.tick();
+// const renderLoop = () => {
+//   universe.tick();
 
-  drawGrid();
-  drawCells();
+//   drawGrid();
+//   drawCells();
 
-  animationId = requestAnimationFrame(renderLoop);
-};
+//   animationId = requestAnimationFrame(renderLoop);
+// };
 
-play();
+// // play();
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch(err => console.log(err));
