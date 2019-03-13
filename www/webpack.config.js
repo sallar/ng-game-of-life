@@ -13,12 +13,19 @@ module.exports = {
         test: /\.tsx?$/,
         use: "ts-loader",
         exclude: /node_modules/
+      },
+      {
+        // Hide import warnings
+        test: /[\/\\]@angular[\/\\]core[\/\\].+\.js$/,
+        parser: { system: true }
       }
     ]
+  },
+  devServer: {
+    stats: "errors-only"
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".wasm"]
   },
-  mode: "development",
-  plugins: [new CopyWebpackPlugin(["index.html"])]
+  mode: "development"
 };

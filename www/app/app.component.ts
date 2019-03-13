@@ -2,7 +2,8 @@ import { Component, ElementRef, ViewChild, AfterViewInit } from "@angular/core";
 import { GameService } from "./game.service";
 import { Cell } from "ng-game-of-life";
 
-const CELL_SIZE = 5; // px
+const CELL_SIZE = 10; // px
+const LINE_WDITH = 2;
 const GRID_COLOR = "#CCCCCC";
 const DEAD_COLOR = "#FFFFFF";
 const ALIVE_COLOR = "#000000";
@@ -10,10 +11,14 @@ const ALIVE_COLOR = "#000000";
 @Component({
   selector: "app-root",
   template: `
-    <button (click)="togglePlay()">
-      {{ isPaused ? "Play" : "Pause" }}
-    </button>
-    <canvas #myCanvas (click)="toggleCells($event)"></canvas>
+    <div class="main">
+      <canvas #myCanvas (click)="toggleCells($event)"></canvas>
+    </div>
+    <div class="actions">
+      <button (click)="togglePlay()">
+        {{ isPaused ? "Play" : "Pause" }}
+      </button>
+    </div>
   `
 })
 export class AppComponent implements AfterViewInit {
@@ -29,8 +34,16 @@ export class AppComponent implements AfterViewInit {
   ngAfterViewInit() {
     const canvas = this.myCanvas.nativeElement;
     this.ctx = canvas.getContext("2d");
-    canvas.height = (CELL_SIZE + 1) * this.game.height + 1;
-    canvas.width = (CELL_SIZE + 1) * this.game.width + 1;
+
+    const canvasHeight =
+      (CELL_SIZE + LINE_WDITH) * this.game.height + LINE_WDITH;
+    const canvasWidth = (CELL_SIZE + LINE_WDITH) * this.game.width + LINE_WDITH;
+
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
+    canvas.style.width = `${canvasWidth / 2}px`;
+    canvas.style.height = `${canvasHeight / 2}px`;
+
     this.drawGrid();
     this.drawCells();
   }
@@ -43,14 +56,20 @@ export class AppComponent implements AfterViewInit {
 
     // Vertical lines.
     for (let i = 0; i <= width; i++) {
-      this.ctx.moveTo(i * (CELL_SIZE + 1) + 1, 0);
-      this.ctx.lineTo(i * (CELL_SIZE + 1) + 1, (CELL_SIZE + 1) * height + 1);
+      this.ctx.moveTo(i * (CELL_SIZE + LINE_WDITH) + LINE_WDITH, 0);
+      this.ctx.lineTo(
+        i * (CELL_SIZE + LINE_WDITH) + LINE_WDITH,
+        (CELL_SIZE + LINE_WDITH) * height + LINE_WDITH
+      );
     }
 
     // Horizontal lines.
     for (let j = 0; j <= height; j++) {
-      this.ctx.moveTo(0, j * (CELL_SIZE + 1) + 1);
-      this.ctx.lineTo((CELL_SIZE + 1) * width + 1, j * (CELL_SIZE + 1) + 1);
+      this.ctx.moveTo(0, j * (CELL_SIZE + LINE_WDITH) + LINE_WDITH);
+      this.ctx.lineTo(
+        (CELL_SIZE + LINE_WDITH) * width + LINE_WDITH,
+        j * (CELL_SIZE + LINE_WDITH) + LINE_WDITH
+      );
     }
 
     this.ctx.stroke();
@@ -70,8 +89,8 @@ export class AppComponent implements AfterViewInit {
           cells[idx] === Cell.Dead ? DEAD_COLOR : ALIVE_COLOR;
 
         this.ctx.fillRect(
-          col * (CELL_SIZE + 1) + 1,
-          row * (CELL_SIZE + 1) + 1,
+          col * (CELL_SIZE + LINE_WDITH) + LINE_WDITH,
+          row * (CELL_SIZE + LINE_WDITH) + LINE_WDITH,
           CELL_SIZE,
           CELL_SIZE
         );
@@ -118,11 +137,19 @@ export class AppComponent implements AfterViewInit {
     const scaleX = canvas.width / boundingRect.width;
     const scaleY = canvas.height / boundingRect.height;
 
-    const canvasLeft = (event.clientX - boundingRect.left) * scaleX;
-    const canvasTop = (event.clientY - boundingRect.top) * scaleY;
+    console.log(boundingRect);
 
-    const row = Math.min(Math.floor(canvasTop / (CELL_SIZE + 1)), height - 1);
-    const col = Math.min(Math.floor(canvasLeft / (CELL_SIZE + 1)), width - 1);
+    const canvasLeft = ((event.clientX - boundingRect.left) * scaleX) / 2;
+    const canvasTop = ((event.clientY - boundingRect.top) * scaleY) / 2;
+
+    const row = Math.min(
+      Math.floor((canvasTop / (CELL_SIZE + LINE_WDITH)) * 2),
+      height - LINE_WDITH
+    );
+    const col = Math.min(
+      Math.floor((canvasLeft / (CELL_SIZE + LINE_WDITH)) * 2),
+      width - LINE_WDITH
+    );
 
     this.game.toggleCell(row, col);
 

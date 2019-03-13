@@ -4,16 +4,32 @@
     <meta charset="utf-8">
     <title>Hello wasm-pack!</title>
     <style>
+      html, body {
+        padding: 0;
+        margin: 0;
+      }
       body {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        height: 100vh;
+      }
+
+      app-root {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 1fr 50px;
+      }
+
+      .main {
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
+      }
+      
+      .actions {
+        background-color: #f9f9f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top: 1px solid #ccc;
       }
     </style>
   </head>
