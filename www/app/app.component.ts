@@ -146,8 +146,6 @@ export class AppComponent implements AfterViewInit {
     const scaleX = canvas.width / boundingRect.width;
     const scaleY = canvas.height / boundingRect.height;
 
-    console.log(boundingRect);
-
     const canvasLeft = ((event.clientX - boundingRect.left) * scaleX) / 2;
     const canvasTop = ((event.clientY - boundingRect.top) * scaleY) / 2;
 
