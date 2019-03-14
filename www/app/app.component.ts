@@ -160,9 +160,41 @@ export class AppComponent implements AfterViewInit {
       width - LINE_WDITH
     );
 
-    this.game.toggleCell(row, col);
+    if (event.metaKey) {
+      this.insertShape("glider", row, col);
+    } else if (event.shiftKey) {
+      this.insertShape("ship", row, col);
+    } else {
+      this.game.toggleCell(row, col);
+    }
 
     this.drawGrid();
     this.drawCells();
+  }
+
+  insertShape(shape: string, row: number, col: number) {
+    const collection = {
+      glider: [
+        [row, col],
+        [row + 2, col - 1],
+        [row + 2, col],
+        [row + 2, col + 1],
+        [row + 1, col + 1]
+      ],
+      ship: [
+        [row, col + 1],
+        [row, col + 2],
+        [row, col + 3],
+        [row + 3, col + 3],
+        [row, col + 4],
+        [row + 1, col + 4],
+        [row + 2, col + 4],
+        [row + 1, col],
+        [row + 3, col]
+      ]
+    };
+    collection[shape].forEach((set: [number, number]) => {
+      this.game.toggleCell(set[0], set[1]);
+    });
   }
 }
