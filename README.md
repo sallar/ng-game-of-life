@@ -1,5 +1,11 @@
 # 🦄 Angular/WASM Game of Life
 
+## Prerequisites
+
+- [Rust Toolchain](https://rustup.rs/)
+- [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)
+- Node and NPM
+
 ## Build and Run
 
 ```sh
@@ -11,6 +17,10 @@ $ npm link ng-game-of-life
 $ npm start
 ```
 
-# License
+## Resources
+
+- [Rust WASM Book](https://rustwasm.github.io/docs/book/)
+
+## License
 
 MIT
