@@ -4,6 +4,7 @@
   "description": "create an app to consume rust-generated wasm packages",
   "main": "index.js",
   "scripts": {
+    "deploy": "gh-pages -d dist",
     "build": "webpack --config webpack.config.js",
     "start": "webpack-dev-server"
   },
@@ -25,20 +26,21 @@
   "homepage": "https://github.com/rustwasm/create-wasm-app#readme",
   "devDependencies": {
     "@angular/animations": "~7.2.0",
+    "@angular/cli": "~7.3.5",
     "@angular/common": "~7.2.0",
     "@angular/compiler": "~7.2.0",
+    "@angular/compiler-cli": "~7.2.0",
     "@angular/core": "~7.2.0",
     "@angular/forms": "~7.2.0",
+    "@angular/language-service": "~7.2.0",
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
-    "@angular/cli": "~7.3.5",
-    "@angular/compiler-cli": "~7.2.0",
-    "@angular/language-service": "~7.2.0",
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.9.4",
     "@types/webassembly-js-api": "0.0.1",
     "copy-webpack-plugin": "^5.0.0",
+    "gh-pages": "^2.0.1",
     "hello-wasm-pack": "^0.1.0",
     "ts-loader": "^5.3.3",
     "tslint": "^5.14.0",
@@ -49,6 +51,7 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "ng-game-of-life": "^0.1.0",
     "stats.js": "^0.17.0",
     "zone.js": "^0.8.29"
   }

@@ -21,6 +21,13 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: "index.html"
+      }
+    ])
+  ],
   devServer: {
     stats: "errors-only"
   },
