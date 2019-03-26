@@ -42,6 +42,7 @@
     "webpack-dev-server": "^3.1.5"
   },
   "dependencies": {
-    "ng-game-of-life": "^0.1.0"
+    "ng-game-of-life": "^0.1.0",
+    "stats.js": "^0.17.0"
   }
 }
