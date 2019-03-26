@@ -7,9 +7,13 @@ import { memory } from "ng-game-of-life/ng_game_of_life_bg";
   providedIn: "root"
 })
 export class GameService {
-  private universe = Universe.new();
+  private universe?: Universe;
 
   constructor() {}
+
+  init(width: number, height: number) {
+    this.universe = Universe.new(width, height);
+  }
 
   get width() {
     return this.universe.width();

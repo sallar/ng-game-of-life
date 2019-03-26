@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
-    "ng-game-of-life": "^0.1.0",
+    "ng-game-of-life": "^0.2.0",
     "stats.js": "^0.17.0",
     "zone.js": "^0.8.29"
   }

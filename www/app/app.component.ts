@@ -34,7 +34,9 @@ export class AppComponent implements AfterViewInit {
 
   private animationId = null;
 
-  constructor(private game: GameService) {}
+  constructor(private game: GameService) {
+    this.game.init(64, 64);
+  }
 
   ngAfterViewInit() {
     const canvas = this.myCanvas.nativeElement;
